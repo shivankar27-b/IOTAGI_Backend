@@ -1,4 +1,12 @@
 # IOTAGI_Backend.
+# Executing Instructions
+- Download the project 
+- In CMD
+- npm install
+- node app.js
+- In browser type
+- localhost:3006
+# Further Instructions
 - In routes section add FAQS and Newsletters
 - In models section add the schema for FAQS and Newsletters similar to Products, services and blogs
 - In views make folder for faqs as well as newsletters and add all 4 files as done in case of Products, services and blogs
