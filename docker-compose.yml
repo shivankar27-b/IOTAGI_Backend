@@ -1,0 +1,23 @@
+version: '3.7'
+
+
+services: 
+    node-react-starter-app:
+        image: thisk8brd/node-react-starter-app:dev
+        build: 
+          context: .
+          target: dev
+        container_name: node-react-starter-app
+        restart: always
+        volumes: 
+          - .:/app
+        ports:
+          - "5000:5000"
+          - "3000:3000"
+        environment:
+          - MONGODB_URI=mongodb://node-react-starter-db/node-react-starter-db
+        networks: 
+          - node-react-starter-network
+networks: 
+  node-react-starter-network:
+    name: node-react-starter-network

@@ -13,7 +13,8 @@ var express = require("express"),
 serviceRoutes = require("./routes/services")
     //add faq, newsletter routes once the schema is final like blog, product and service as shown
 indexRoutes = require("./routes/index")
-mongoose.connect("mongodb://localhost/iotagi");
+const database = async ()=> await mongoose.connect("mongodb+srv://rohan:rohan@cluster0.29lux.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology: true,useFindAndModify: false, }).then(x =>{console.log("connected to database sucessfully")}).catch(error=>{console.error('Error connecting to mongo', err);});
+database();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
@@ -40,6 +41,8 @@ app.use("/", indexRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/products", productRoutes);
 app.use("/services", serviceRoutes);
-app.listen(3006, function() {
-    console.log("App about to start");
+
+const port =process.env.PORT || 3006
+app.listen(port, function() {
+    console.log("App about to start",process.env.PORT);
 });
